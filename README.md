@@ -1,3 +1,10 @@
+Unsplash API used, due Flickr has login problems
+Unsplash has a limit of 50 request per hour
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

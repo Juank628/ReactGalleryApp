@@ -1,30 +1,37 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+
+import apiKey from "../config"
+import Photo from "./Photo"
 
 export default class PhotoContainer extends Component {
-    render() {
-        return (
-            <div class="photo-container">
-            <h2>Results</h2>
-            <ul>
-              <li>
-                <img src="https://farm5.staticflickr.com/4334/37032996241_4c16a9b530.jpg" alt="" />
-              </li>
-              <li>
-                <img src="https://farm5.staticflickr.com/4342/36338751244_316b6ee54b.jpg" alt="" />
-              </li>
-              <li>
-                <img src="https://farm5.staticflickr.com/4343/37175099045_0d3a249629.jpg" alt="" />
-              </li>
-              <li>
-                <img src="https://farm5.staticflickr.com/4425/36337012384_ba3365621e.jpg" alt="" />
-              </li>
-              {/*Not Found*/}
-              <li class="not-found">
-                <h3>No Results Found</h3>
-                <p>You search did not return any results. Please try again.</p>
-              </li>
-            </ul>
-          </div>
-        )
-    }
+  state = {
+    apiUrl: "https://api.unsplash.com/search/photos/",
+    searchWord: "dogs",
+    images: []
+  };
+
+  componentDidMount() {
+    fetch(`${this.state.apiUrl}?query=${this.state.searchWord}&client_id=${apiKey}`)
+      .then(res => res.json())
+      .then(data => this.setState({images: data.results}))
+      .catch(err => console.log(err));
+  }
+
+  render() {
+    return (
+      <div className="photo-container">
+        <h2>Results</h2>
+        <ul>
+          {this.state.images.map(image => 
+            <Photo key={image.id} url={image.urls.thumb} alt={image.alt_description} />
+          )}
+          {/*Not Found*/}
+          {/*<li class="not-found">
+            <h3>No Results Found</h3>
+            <p>You search did not return any results. Please try again.</p>
+          </li>*/}
+        </ul>
+      </div>
+    );
+  }
 }
