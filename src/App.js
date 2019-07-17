@@ -1,16 +1,23 @@
-import React from 'react';
-
-import Nav from './components/Nav'
-import SearchForm from './components/SearchForm'
-import PhotoContainer from './components/PhotoContainer'
+import React from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import Nav from "./components/Nav";
+import SearchForm from "./components/SearchForm";
+import PhotoContainer from "./components/PhotoContainer";
+import NotFound from "./components/NotFound"
 
 function App() {
   return (
-    <div className="container">
-      <SearchForm />
-      <Nav />
-      <PhotoContainer />
-    </div>
+    <BrowserRouter>
+      <div className="container">
+        <SearchForm />
+        <Nav />
+        <Switch>
+          <Route exact path="/" render={()=><Redirect to="/dogs" />} />
+          <Route exact path="/:searchWord" component={PhotoContainer} />
+          <Route component={NotFound} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 

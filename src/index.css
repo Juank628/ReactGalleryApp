@@ -103,6 +103,10 @@ input {
   }
 }
 
+.page-not-found {
+  font-size: 28px
+}
+
 @media only screen and (min-width: 768px)  {
   body {
     padding-top: 4em;
