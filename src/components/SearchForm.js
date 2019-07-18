@@ -1,10 +1,34 @@
 import React, { Component } from "react";
+import {withRouter} from "react-router-dom";
 
-export default class SearchForm extends Component {
+class SearchForm extends Component {
+  state = {
+    searchWord: ""
+  };
+
+  //update the searchWord each time the search input change
+  inputUpdate(e) {
+    this.setState({
+      searchWord: e.target.value
+    });
+  }
+
+  //set the route with the search word
+  handleSearch(e) {
+    e.preventDefault();
+    this.props.history.push(`/${this.state.searchWord}`)
+  }
+
   render() {
     return (
-      <form className="search-form">
-        <input type="search" name="search" placeholder="Search" required />
+      <form className="search-form" onSubmit={this.handleSearch.bind(this)}>
+        <input
+          type="search"
+          name="search"
+          placeholder="Search"
+          required
+          onChange={this.inputUpdate.bind(this)}
+        />
         <button type="submit" className="search-button">
           <svg
             fill="#fff"
@@ -21,3 +45,6 @@ export default class SearchForm extends Component {
     );
   }
 }
+
+//using withRouter in order tu have access to props.history
+export default withRouter(SearchForm)

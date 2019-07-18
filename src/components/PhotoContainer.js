@@ -5,34 +5,40 @@ import Photo from "./Photo";
 export default class PhotoContainer extends Component {
   state = {
     apiUrl: "https://api.unsplash.com/search/photos/",
-    images: []
+    images: [],
+    loading: true
   };
 
+  //search for new images when the component did mount
   componentDidMount() {
-    console.log("mounted");
     this.getImages(this.props.match.params.searchWord);
   }
 
+  //search for new images only if the search word changes
   componentDidUpdate(prevProps) {
     if (
       prevProps.match.params.searchWord !== this.props.match.params.searchWord
     ) {
-      console.log("New data query");
       this.getImages(this.props.match.params.searchWord);
     }
   }
 
+  //api fetch
   getImages(searchWord) {
-    fetch(`${this.state.apiUrl}?query=${searchWord}&client_id=${apiKey}`)
+    this.setState({ loading: true });
+    fetch(`${this.state.apiUrl}?per_page=24&query=${searchWord}&client_id=${apiKey}`)
       .then(res => res.json())
-      .then(data => this.setState({ images: data.results }))
+      .then(data => this.setState({ images: data.results, loading: false }))
       .catch(err => console.log(err));
   }
 
   render() {
+    const {searchWord} = this.props.match.params
     return (
       <div className="photo-container">
-        <h2>Results</h2>
+        
+        {this.state.loading ? <h2 className="loading-text">Loading...</h2> : <h2>{`${searchWord} Gifts`}</h2>}
+        
         {this.state.images.length > 0 ? (
           <ul>
             {this.state.images.map(image => (

@@ -3,22 +3,22 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Nav from "./components/Nav";
 import SearchForm from "./components/SearchForm";
 import PhotoContainer from "./components/PhotoContainer";
-import NotFound from "./components/NotFound"
+import NotFound from "./components/NotFound";
 
-function App() {
-  return (
-    <BrowserRouter>
-      <div className="container">
-        <SearchForm />
-        <Nav />
-        <Switch>
-          <Route exact path="/" render={()=><Redirect to="/dogs" />} />
-          <Route exact path="/:searchWord" component={PhotoContainer} />
-          <Route component={NotFound} />
-        </Switch>
-      </div>
-    </BrowserRouter>
-  );
+function App () {
+    return (
+      <BrowserRouter>
+        <div className="container">
+          <SearchForm />
+          <Nav />
+          <Switch>
+            <Route exact path="/" render={() => <Redirect to="/cats" />} />
+            <Route exact path="/:searchWord" component={PhotoContainer} />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+      </BrowserRouter>
+    );
 }
 
 export default App;
