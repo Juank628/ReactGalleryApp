@@ -6,13 +6,13 @@ export default function Nav() {
     <nav className="main-nav">
       <ul>
         <li>
-          <NavLink to="/cats">Cats</NavLink>
+          <NavLink to="/gifs/cats">Cats</NavLink>
         </li>
         <li>
-          <NavLink to="/dogs">Dogs</NavLink>
+          <NavLink to="/gifs/dogs">Dogs</NavLink>
         </li>
         <li>
-          <NavLink to="/computers">Computers</NavLink>
+          <NavLink to="/gifs/computers">Computers</NavLink>
         </li>
       </ul>
     </nav>

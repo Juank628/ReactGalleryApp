@@ -12,8 +12,9 @@ function App () {
           <SearchForm />
           <Nav />
           <Switch>
-            <Route exact path="/" render={() => <Redirect to="/cats" />} />
-            <Route exact path="/:searchWord" component={PhotoContainer} />
+            <Route exact path="/" render={() => <Redirect to="/gifs/cats" />} />
+            <Route exact path="/gifs" render={() => <Redirect to="/gifs/cats" />} />
+            <Route exact path="/gifs/:searchWord" component={PhotoContainer} />
             <Route component={NotFound} />
           </Switch>
         </div>

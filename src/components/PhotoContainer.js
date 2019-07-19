@@ -37,7 +37,7 @@ export default class PhotoContainer extends Component {
     return (
       <div className="photo-container">
         
-        {this.state.loading ? <h2 className="loading-text">Loading...</h2> : <h2>{`${searchWord} Gifts`}</h2>}
+        {this.state.loading ? <h2 className="loading-text">Loading...</h2> : <h2>{`${searchWord} Gifs`}</h2>}
         
         {this.state.images.length > 0 ? (
           <ul>

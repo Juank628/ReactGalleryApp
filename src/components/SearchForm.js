@@ -16,7 +16,7 @@ class SearchForm extends Component {
   //set the route with the search word
   handleSearch(e) {
     e.preventDefault();
-    this.props.history.push(`/${this.state.searchWord}`)
+    this.props.history.push(`/gifs/${this.state.searchWord}`)
   }
 
   render() {
