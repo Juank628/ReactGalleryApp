@@ -1,6 +1,13 @@
 Unsplash API used, due Flickr has login problems
 Unsplash has a limit of 50 request per hour
 
+The config.js file is included in gitignore in order to avoid show the api key.
+Please add a file named "config.js" in the src folder and copy the following code:
+
+const apiKey = "02c0154df499e25dcddd00171cbe6fee14f39ce05b3838faea3a837c0fb37e99";
+export default apiKey;
+
+
 
 
 
